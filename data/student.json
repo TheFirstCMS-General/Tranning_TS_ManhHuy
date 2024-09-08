@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "class_id": 1,
+        "birthday": "2002-06-28",
+        "gender": "Nam",
+        "address": "Hà Nội",
+        "phone_number": "0999999999",
+        "deleted": 0
+    }
+]
