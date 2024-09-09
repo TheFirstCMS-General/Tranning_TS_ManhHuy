@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.get('/', (req: any, res: any) => {
     try {
-        res.json({ "message": "test aaa" });
+        res.json({ "message": "heloo" });
     }
     catch (error) {
         console.error('Error fetching grade data:', error);
