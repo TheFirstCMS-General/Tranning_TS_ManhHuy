@@ -2,7 +2,14 @@
     {
         "id": 1,
         "code": "C001",
-        "name": "6c",
+        "name": "6A",
+        "deleted": 0
+    },
+
+    {
+        "id": 2,
+        "code": "C001",
+        "name": "7B",
         "deleted": 0
     }
 ]
