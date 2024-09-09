@@ -1,5 +1,5 @@
 export enum Gender {
-    Male = "Nam",
-    Female = "Nữ",
-    Other = "Khác"
+    MALE = "Nam",
+    FEMALE = "Nữ",
+    OTHER = "Khác"
 }

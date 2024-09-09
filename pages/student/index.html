@@ -29,7 +29,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
                 <img src="../../assets/img/logo.png" alt="">
-                <span style="white-space: nowrap;" class="d-none d-lg-block">Hệ Thống Quản Lý Học Sinh</span>
+                <span class="d-none d-lg-block">MINI PROJECT</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
@@ -50,56 +50,47 @@
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
                 <a class="nav-link " href="http://127.0.0.1:5500/pages/student/index.html">
-                    <span>Quản lý lớp học</span>
+                    <span>Quản lý đóng học</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse"
-                    href="http://127.0.0.1:5500/pages/index.html">
-                    <span>Quản lý học sinh</span>
+                    href="http://127.0.0.1:5500/pages/fee/index.html">
+                    <span>Cấu hình học phí</span>
                 </a>
             </li>
-            <li class="nav-item"></li>
-            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse"
-                href="http://127.0.0.1:5500/pages/student/attendanceRecord.html">
-                <span>Phiên điểm danh</span>
-            </a>
-        </li>
-        <li class="nav-item"></li>
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse"
-            href="http://127.0.0.1:5500/pages/student/attendanceSession.html">
-            <span>Điểm danh học sinh</span>
-        </a>
-    </li>
         </ul>
     </aside>
 
     <main id="main" class="main">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Quản lý học sinh</h5>
-                <div style=" margin-top: -51px;" class="action-student-list d-flex gap-2">
+                <h5 class="card-title">Danh sách học sinh</h5>
+                <div class="action-student-list d-flex gap-2">
                     <div class="item-action">
-                        <input type="text" placeholder="Tìm kiếm" class="form-control" id="search-keyword">
+                        <input type="text" placeholder="Tìm kiếm" class="form-control" id="search-student">
                     </div>
-                    <button style="background-color: #9242cc; border-color: #9242cc;" type="button" class="btn btn-success">Thêm mới học sinh</button>
+                    <div class="item-action">
+                        <button style="background-color: #9242cc; border-color: #9242cc;" type="button"
+                            class="btn btn-success">Thêm mới học sinh</button>
+                    </div>
                     <div class="item-action">
                         <button type="button" id="export-excel" class="btn btn-success document">Xuất báo cáo</button>
                     </div>
-                        <!-- Input file ẩn -->
-                        <input type="file" id="import-student" style="display:none">
-                    </div>
+                    <!-- Input file ẩn -->
+                    <input type="file" id="import-student" style="display:none">
                 </div>
-
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Tên học sinh</th>
-                            <th scope="col">Ngày tháng năm sinh</th>
+                            <th scope="col">Mã sinh viên</th>
+                            <th scope="col">Tên sinh viên</th>
                             <th scope="col">Giới tính</th>
+                            <th scope="col">Ngày tháng năm sinh</th>
                             <th scope="col">Địa chỉ</th>
                             <th scope="col">Số điện thoại</th>
+                            <th scope="col">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody id="student-list"></tbody>
@@ -110,6 +101,9 @@
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
+
+    <script type="module" src="../../assets/js/student.js"></script>
+    <script type="module" src="../../assets/js/event.js"></script>
 </body>
 
 </html>

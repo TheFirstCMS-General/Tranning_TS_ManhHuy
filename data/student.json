@@ -1,11 +1,24 @@
 [
     {
         "id": 1,
-        "class_id": 1,
+        "code": "S001",
+        "name": "Nguyễn Quang Huy",
         "birthday": "2002-06-28",
-        "gender": "Nam",
+        "gender": "MALE",
         "address": "Hà Nội",
         "phone_number": "0999999999",
+        "class_id": 1,
+        "deleted": 0
+    },
+    {
+        "id": 2,
+        "code": "S002",
+        "name": "Nguyễn Phúc Mạnh",
+        "birthday": "2001-01-11",
+        "gender": "MALE",
+        "address": "Hà Nội",
+        "phone_number": "0888888888",
+        "class_id": 1,
         "deleted": 0
     }
 ]
