@@ -7,6 +7,7 @@ export class Baseresponse<T> {
     constructor();
     // Constructor có tham số
     constructor(code: string, message: string, data: T);
+    
     constructor(code?: string, message?: string, data?: T) {
         this.code = code ?? ''; // Sử dụng giá trị mặc định nếu không có tham số
         this.message = message ?? '';
