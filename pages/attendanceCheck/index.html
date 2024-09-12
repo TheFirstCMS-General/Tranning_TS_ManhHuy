@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Phiên Điểm Danh</title>
+    <title>ĐIỂM DANH SINH VIÊN</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -27,9 +27,9 @@
 <body>
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between">
-            <a href="http://127.0.0.1:5500/pages/class/index.html" href="index.html" class="logo d-flex align-items-center">
+            <a href="./index.html" href="index.html" class="logo d-flex align-items-center">
                 <img src="../../assets/img/logo.png" alt="">
-                <span style="white-space: nowrap;" class="d-none d-lg-block">Hệ Thống Quản Lý Học Sinh</span>
+                <span style="white-space: nowrap;" class="d-none d-lg-block">Hệ Thống Quản Lý Sinh Viên</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
@@ -45,53 +45,61 @@
         </nav>
     </header>
 
-
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-                <a class="nav-link " href="http://127.0.0.1:5500/pages/class/index.html">
+                <a class="nav-link " href="../class/index.html">
                     <span>Quản lý lớp học</span>
                 </a>
             </li>
-
-            <li class="nav-item"></li>
+            <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse"
-                    href="http://127.0.0.1:5500/pages/student/attendanceRecord.html">
+                    href="../attendanceSession/index.html">
                     <span>Phiên điểm danh</span>
                 </a>
             </li>
-            <li class="nav-item"></li>
-            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse"
-                href="http://127.0.0.1:5500/pages/student/attendanceSession.html">
-                <span>Điểm danh học sinh</span>
-            </a>
-        </li>
         </ul>
     </aside>
 
     <main id="main" class="main">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Phiên điểm danh</h5>
+                <h5 class="card-title">Điểm danh sinh viên</h5>
                 <div class="row mt-5">
                     <div class="col-md-12">
-                        <form id="create-session-form" class="row g-3">
-                            <div class="col-md-6">
-                                <label style="font-weight: bold;" for="class-name" class="form-label">Tên Lớp</label>
-                                <input type="text" class="form-control" id="class-name" placeholder="Nhập tên lớp học">
-                            </div>
-                            <div class="col-md-6">
-                                <label style="font-weight: bold;" for="attendance-date" class="form-label">Ngày Giờ Điểm Danh</label>
-                                <input type="datetime-local" class="form-control" id="attendance-date">
-                            </div>
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-success">Tạo Phiên Điểm Danh</button>
-                            </div>
-                        </form>
+                        <div class="row card-status" id="card-status"></div>
                     </div>
                 </div>
+                <div class="action-list d-flex gap-2">
+                    <div class="item-action">
+                        <input type="text" placeholder="Tìm kiếm" class="form-control" id="search-class">
+                    </div>
+                    <div class="item-action">
+                        <button type="button" id="export-excel" class="btn btn-success document">Xuất báo cáo</button>
+                    </div>
+                    <!-- Input file ẩn -->
+                    <input type="file" id="import-student" style="display:none">
+                </div>
 
-            
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Mã sinh viên</th>
+                            <th scope="col">Họ và tên</th>
+                            <th scope="col">Lớp học</th>
+                            <th scope="col">Có mặt</th>
+                            <th scope="col">Đến muộn</th>
+                            <th scope="col">Nghỉ có phép</th>
+                            <th scope="col">Nghỉ không phép</th>
+                            <th scope="col">Ghi chú</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance-student"></tbody>
+                </table>
+
+                <button class="btn btn-primary" type="button" id="submit-attendance">Lưu điểm danh</button>
+
             </div>
         </div>
     </main>
@@ -99,8 +107,7 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-
-    <script src="../../assets/js/main.js"></script>
+    <script type="module" src="../../assets/js/attendanceCheck/index.js"></script>
 </body>
 
 </html>

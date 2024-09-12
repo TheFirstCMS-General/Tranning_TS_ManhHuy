@@ -1222,7 +1222,7 @@ h6 {
   color: #012970;
 }
 
-.action-student-list, .action-fee-list, .action-session-list{
+.action-list{
   float: right;
   padding: 20px 0 20px 0;
 }
@@ -1254,4 +1254,18 @@ body {
 
 .color{
   color: #ffffff;
+}
+.form-check-input:checked {
+  background-color: #007bff; /* Màu nền khi radio được chọn */
+  border-color: #007bff;     /* Màu viền */
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Tùy chỉnh màu radio khi chưa được chọn */
+.form-check-input {
+  border-width: 2px; /* Tăng độ đậm viền */
+  border-color: #6c757d; /* Màu viền mặc định */
 }

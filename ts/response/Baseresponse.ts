@@ -1,25 +1,23 @@
-export class Baseresponse<T> {
-    private code: string;
+export class BaseResponse<T> {
+    private code: number;
     private message: string;
     private data: T;
 
     // Constructor không tham số
     constructor();
-    // Constructor có tham số
-    constructor(code: string, message: string, data: T);
     
-    constructor(code?: string, message?: string, data?: T) {
-        this.code = code ?? ''; // Sử dụng giá trị mặc định nếu không có tham số
+    constructor(code?: number, message?: string, data?: T) {
+        this.code = code ?? 500; // Sử dụng giá trị mặc định nếu không có tham số
         this.message = message ?? '';
         this.data = data ?? ({} as T); // Sử dụng kiểu khởi tạo mặc định
     }
 
     // Getter và Setter cho `code`
-    public getCode(): string {
+    public getCode(): number {
         return this.code;
     }
 
-    public setCode(code: string): void {
+    public setCode(code: number): void {
         this.code = code;
     }
 

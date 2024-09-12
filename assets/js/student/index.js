@@ -1,12 +1,25 @@
-import { post, getParam } from "./method.js"
+import { post, getParam } from "../method.js"
 import { SERVER_HOST } from "../constant.js";
 
 function renderStudent() {
     const body = {};
     body.class_id = getParam('class');
     body.code = null;
+    fetchStudent(body);
+}
+
+document.getElementById('search-student').onkeyup = function () {
+    const body = {};
+    body.class_id = getParam('class');
+    body.code = this.value;
+    fetchStudent(body);
+}
+
+function fetchStudent(body) {
     post(SERVER_HOST + '/student', body).
         then(data => {
+            console.log(data);
+            
             const tableData = document.getElementById('student-list');
             const studentData = data.data;
             tableData.innerHTML = '';
@@ -18,18 +31,17 @@ function renderStudent() {
                 }).replace(/\//g, ' - ');
                 let row =
                     `<tr>
-                <td>${index + 1}</td>
-                <td>${student.code}</td>
-                <td>${student.name}</td>
-                <td>${student.gender}</td>
-                <td>${birthDay}</td>
-                <td>${student.address}</td>
-                <td>${student.phoneNumber}</td>
-                <td>
-                    <a href="./index.html" type="button" class="btn btn-primary">Xem</a>
-                    <a href="./index.html" type="button" class="btn btn-danger">Xóa</a>
-                </td>
-            </tr>`
+            <td>${index + 1}</td>
+            <td>${student.code}</td>
+            <td>${student.name}</td>
+            <td>${student.gender}</td>
+            <td>${birthDay}</td>
+            <td>${student.address}</td>
+            <td>${student.phoneNumber}</td>
+            <td>
+                <a href="./index.html" type="button" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>`
                 tableData.innerHTML += row;
             });
         });

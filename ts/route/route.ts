@@ -3,7 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import classRoutes from './class';
 import studentRoutes from './student';
-
+import shiftRoutes from './shift';
 const app = express();
 const port = 3000;
 
@@ -11,8 +11,7 @@ const port = 3000;
 app.use(cors());
 
 // Cài đặt middleware để parse JSON
-app.use(bodyParser.json()); // Hoặc dùng express.json() nhưng không cần cả hai
-// app.use(express.json()); // Bạn chỉ cần sử dụng một trong hai
+app.use(express.json());
 
 app.get('/', (req, res) => {
     try {
@@ -28,6 +27,9 @@ app.use('/class', classRoutes);
 
 // Định nghĩa các route cho /class
 app.use('/student', studentRoutes);
+
+// Định nghĩa các route cho /class
+app.use('/shift', shiftRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

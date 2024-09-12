@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "attendance_session_id": 1,
+    "student_id": 1,
+    "status": "PRESENT",
+    "note": null,
+    "deleted": 0
+  },
+  {
+    "id": 2,
+    "attendance_session_id": 5,
+    "student_id": 1,
+    "status": "EXCUSED_ABSENCE",
+    "status_code": "",
+    "note": "ok nha",
+    "deleted": 0
+  },
+  {
+    "id": 3,
+    "attendance_session_id": 5,
+    "student_id": 2,
+    "status": "TARDY",
+    "status_code": "",
+    "note": "",
+    "deleted": 0
+  }
+]
