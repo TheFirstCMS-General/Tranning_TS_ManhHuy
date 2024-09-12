@@ -13,7 +13,7 @@ function renderAttendanceSession() {
             <td>${attendanceSession.class_name}</td>
             <td>${attendanceSession.shift_name}</td>
             <td>
-                <a href="../student/index.html?class=${attendanceSession.id}" type="button" class="btn btn-primary">Xem điểm danh</a>
+                <a href="../attendanceCheck/index.html?id=${attendanceSession.id}&class=${attendanceSession.class_id}" type="button" class="btn btn-primary">Xem điểm danh</a>
                 <a href="./index.html" type="button" class="btn btn-danger">Xóa</a>
             </td>
         </tr>`

@@ -3,7 +3,7 @@ import { IStudentService } from "../IStudentService";
 import { BaseResponse } from "../../response/BaseResponse";
 import fs from 'fs/promises'; // Sử dụng fs/promises cho Promise-based API
 import path from 'path';
-import { Gender } from "../../enum/gender";
+import { Gender } from "../../enum/Gender";
 import { StudentFilterRequest } from "../../request/StudentFilterRequest";
 
 const pathJson = path.join(__dirname, "../../../data/student.json");

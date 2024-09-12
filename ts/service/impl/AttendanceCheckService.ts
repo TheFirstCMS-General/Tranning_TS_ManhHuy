@@ -2,7 +2,7 @@ import { AttendanceCheckDto } from "../../dto/AttendanceCheckDto";
 import { AttendanceCheckRequestFilter } from "../../request/AttendanceCheckFilterRequest";
 import { BaseResponse } from "../../response/BaseResponse";
 import { IAttendanceCheckService } from "../IAttendanceCheckService";
-import { AttendanceStatus } from "../../enum/attendanceStatus";
+import { AttendanceStatus } from "../../enum/AttendanceStatus";
 import fs from 'fs/promises';
 import path from 'path';
 const pathAttendanceCheck = path.join(__dirname, "../../../data/attendanceCheck.json");

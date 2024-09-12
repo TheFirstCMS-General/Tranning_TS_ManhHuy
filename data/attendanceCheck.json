@@ -4,7 +4,8 @@
     "attendance_session_id": 1,
     "student_id": 1,
     "status": "PRESENT",
-    "note": null,
+    "status_code": "",
+    "note": "oke",
     "deleted": 0
   },
   {
@@ -19,6 +20,15 @@
   {
     "id": 3,
     "attendance_session_id": 5,
+    "student_id": 2,
+    "status": "TARDY",
+    "status_code": "",
+    "note": "",
+    "deleted": 0
+  },
+  {
+    "id": 4,
+    "attendance_session_id": 1,
     "student_id": 2,
     "status": "TARDY",
     "status_code": "",
