@@ -20,5 +20,82 @@
         "phone_number": "0888888888",
         "class_id": 1,
         "deleted": 0
+    },
+    {
+        "id": 3,
+        "code": "S003",
+        "name": "Nguyễn Văn A",
+        "birthday": "2002-02-12",
+        "gender": "MALE",
+        "address": "Hải Phòng",
+        "phone_number": "0111111111",
+        "class_id": 1,
+        "deleted": 0
+    },
+    {
+        "id": 4,
+        "code": "S004",
+        "name": "Nguyễn Thị B",
+        "birthday": "2001-20-11",
+        "gender": "FEMALE",
+        "address": "Đà Nẵng",
+        "phone_number": "0222222222",
+        "class_id": 1,
+        "deleted": 0
+    },
+    {
+        "id": 5,
+        "code": "S005",
+        "name": "Vũ Văn D",
+        "birthday": "2001-22-11",
+        "gender": "MALE",
+        "address": "Hà Nội",
+        "phone_number": "0333333333",
+        "class_id": 1,
+        "deleted": 0
+    },
+    {
+        "id": 6,
+        "code": "S006",
+        "name": "Trần Thị H",
+        "birthday": "2002-12-31",
+        "gender": "FEMALE",
+        "address": "Vĩnh Phúc",
+        "phone_number": "0666666666",
+        "class_id": 1,
+        "deleted": 0
+    },
+    {
+        "id": 7,
+        "code": "S007",
+        "name": "Vũ Thị Y",
+        "birthday": "2001-08-03",
+        "gender": "FEMALE",
+        "address": "Hà Nội",
+        "phone_number": "0777777777",
+        "class_id": 1,
+        "deleted": 0
+    },
+    {
+        "id": 8,
+        "code": "S008",
+        "name": "Lê Văn C",
+        "birthday": "2001-08-06",
+        "gender": "MALE",
+        "address": "Hà Nội",
+        "phone_number": "0444444444",
+        "class_id": 1,
+        "deleted": 0
+    },
+    {
+        "id": 9,
+        "code": "S009",
+        "name": "Nguyễn Phúc Công",
+        "birthday": "2003-09-11",
+        "gender": "MALE",
+        "address": "Hà Nội",
+        "phone_number": "0555555555",
+        "class_id": 1,
+        "deleted": 0
     }
 ]

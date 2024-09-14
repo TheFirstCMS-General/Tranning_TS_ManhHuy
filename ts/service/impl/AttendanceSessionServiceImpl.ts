@@ -9,6 +9,7 @@ import path from 'path';
 const pathAttendanceSession = path.join(__dirname, "../../../data/attendanceSession.json");
 const pathClass = path.join(__dirname, "../../../data/class.json");
 const pathShift = path.join(__dirname, "../../../data/shift.json");
+const pathAttendanceCheck = path.join(__dirname, "../../../data/attendanceCheck.json");
 
 export class AttendanceSessionServiceImpl implements IAttendanceSessionService {
     async getAll(): Promise<BaseResponse<AttendanceSessionDto[]>> {
@@ -82,6 +83,49 @@ export class AttendanceSessionServiceImpl implements IAttendanceSessionService {
         } catch (error) {
             response.setCode(500);
             response.setMessage('Thêm phiên điểm danh không thành công');
+        }
+
+        return response;
+    }
+
+    async getRecord(recordId: number): Promise<BaseResponse<AttendanceSessionDto>> {
+        const response = new BaseResponse<AttendanceSessionDto>();
+        try {
+            const attendanceSessionRead = await fs.readFile(pathAttendanceSession, 'utf8');
+            const attendanceSessionData: any[] = JSON.parse(attendanceSessionRead);
+            const attendanceCheckRead = await fs.readFile(pathAttendanceCheck, 'utf8');
+            const attendanceCheckData: any[] = JSON.parse(attendanceCheckRead);
+            
+
+            const countPresent = attendanceCheckData.filter(item => item.status == "PRESENT"&& item.attendance_session_id === recordId).length;
+            const countTardy = attendanceCheckData.filter(item => item.status == "TARDY" && item.attendance_session_id === recordId).length;
+            const countExcusedAbsence = attendanceCheckData.filter(item => item.status == "EXCUSED_ABSENCE" && item.attendance_session_id === recordId).length;
+            const countUnexcusedAbsence = attendanceCheckData.filter(item => item.status == "UNEXCUSED_ABSENCE" && item.attendance_session_id === recordId).length;
+            const cartReport = {
+                present: countPresent,
+                tardy: countTardy,
+                excused_absence: countExcusedAbsence,
+                unexcused_absence: countUnexcusedAbsence
+            };
+            
+
+            const filteredAttendance = attendanceSessionData.find(item => item.id === recordId);
+            const outPut = new AttendanceSessionDto(
+                filteredAttendance.id,
+                filteredAttendance.class_id,
+                null,
+                cartReport,
+                filteredAttendance.shift_id,
+                filteredAttendance.created_at,
+                filteredAttendance.deleted
+            )
+            response.setCode(200);
+            response.setMessage('Lấy danh sách phiên điểm danh thành công');
+            response.setData(outPut);
+        } catch (error) {
+            response.setCode(500);
+            response.setMessage('Lấy danh sách phiên điểm danh không thành công');
+            response.setData(null);
         }
 
         return response;

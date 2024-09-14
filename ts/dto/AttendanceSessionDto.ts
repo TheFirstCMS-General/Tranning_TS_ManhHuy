@@ -7,12 +7,15 @@ export class AttendanceSessionDto {
     private shift_name: string;
     private deleted: number;
     private class_code: string;
+    private cart_report: object;
 
     // Constructor overloading for different initialization cases
-    constructor(id?: number, class_id?: number, shift_id?: number, create_at?: string, deleted?: number) {
-        this.id = id ?? null; 
-        this.class_id = class_id ?? null; 
-        this.shift_id = shift_id ?? null; 
+    constructor(id?: number, class_id?: number, class_code?: string, cart_report?: object, shift_id?: number, create_at?: string, deleted?: number) {
+        this.id = id ?? null;
+        this.class_id = class_id ?? null;
+        this.class_code = class_code ?? null;
+        this.cart_report = cart_report ?? null;
+        this.shift_id = shift_id ?? null;
         this.create_at = create_at ?? null;
         this.deleted = deleted ?? 0;
     }
@@ -71,8 +74,8 @@ export class AttendanceSessionDto {
         this.class_code = class_code;
     }
 
-     // Getter and Setter for create_at
-     public getShiftName(): string | null {
+    // Getter and Setter for create_at
+    public getShiftName(): string | null {
         return this.shift_name;
     }
 
@@ -87,5 +90,14 @@ export class AttendanceSessionDto {
 
     public setDeleted(deleted: number): void {
         this.deleted = deleted;
+    }
+
+    public getCartReport(): object {
+        return this.cart_report;
+    }
+
+    // Setter for cart_report
+    public setCartReport(newReport: object): void {
+        this.cart_report = newReport;
     }
 }

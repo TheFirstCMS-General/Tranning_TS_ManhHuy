@@ -99,6 +99,18 @@ router.get('/attendance-session', async (req, res) => {
         res.status(500).send('Lỗi khi đọc dữ liệu JSON');
     }
 });
+// Chuyển hàm route handler thành async
+router.get('/attendance-session/:id', async (req, res) => {
+    try {
+        const attendanceId = parseInt(req.params.id);
+        const attendanceSession = await attendanceSessionService.getRecord(attendanceId);
+        res.json(attendanceSession);
+    } catch (error) {
+        // Xử lý lỗi và gửi phản hồi lỗi
+        console.error('Error fetching student data:', error);
+        res.status(500).send('Lỗi khi đọc dữ liệu JSON');
+    }
+});
 
 
 export default router;

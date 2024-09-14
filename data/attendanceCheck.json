@@ -1,38 +1,11 @@
 [
   {
     "id": 1,
-    "attendance_session_id": 1,
-    "student_id": 1,
-    "status": "PRESENT",
-    "status_code": "",
-    "note": "oke",
-    "deleted": 0
-  },
-  {
-    "id": 2,
-    "attendance_session_id": 5,
-    "student_id": 1,
-    "status": "EXCUSED_ABSENCE",
-    "status_code": "",
-    "note": "ok nha",
-    "deleted": 0
-  },
-  {
-    "id": 3,
-    "attendance_session_id": 5,
-    "student_id": 2,
-    "status": "TARDY",
-    "status_code": "",
-    "note": "",
-    "deleted": 0
-  },
-  {
-    "id": 4,
-    "attendance_session_id": 1,
-    "student_id": 2,
-    "status": "TARDY",
-    "status_code": "",
-    "note": "",
+    "attendance_session_id": null,
+    "student_id": null,
+    "status": null,
+    "status_code": null,
+    "note": null,
     "deleted": 0
   }
 ]

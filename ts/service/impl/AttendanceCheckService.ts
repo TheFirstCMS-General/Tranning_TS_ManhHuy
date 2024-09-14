@@ -10,14 +10,12 @@ const pathAttendanceCheck = path.join(__dirname, "../../../data/attendanceCheck.
 export class AttendanceCheckService implements IAttendanceCheckService {
     async getAll(filterRequest: AttendanceCheckRequestFilter): Promise<BaseResponse<AttendanceCheckDto[]>> {
         const response = new BaseResponse<AttendanceCheckDto[]>();
-
         try {
-           
             const data = await fs.readFile(pathAttendanceCheck, 'utf8');
-            const attendanceCheckData = JSON.parse(data); 
+            const attendanceCheckData = JSON.parse(data);
             const attendanceChecks: AttendanceCheckDto[] = attendanceCheckData.map((item: any) => {
                 const attendanceStatus = item.status as keyof typeof AttendanceStatus;
-                const status = AttendanceStatus[attendanceStatus]; 
+                const status = AttendanceStatus[attendanceStatus];
                 return new AttendanceCheckDto(
                     item.id,
                     item.attendance_session_id,
@@ -30,7 +28,7 @@ export class AttendanceCheckService implements IAttendanceCheckService {
             });
 
             const filteredAttendanceCheck = attendanceChecks.filter(attendance => {
-                const attendanceSessionMatches =  attendance.getAttendanceSessionId() === filterRequest.getAttendanceSessionId();
+                const attendanceSessionMatches = attendance.getAttendanceSessionId() === filterRequest.getAttendanceSessionId();
                 return attendanceSessionMatches;
             });
 
@@ -49,11 +47,11 @@ export class AttendanceCheckService implements IAttendanceCheckService {
         const response = new BaseResponse<any>();
         try {
             const attendanceCheckRead = await fs.readFile(pathAttendanceCheck, 'utf8');
-            const attendanceCheckData : any[] = JSON.parse(attendanceCheckRead);
+            const attendanceCheckData: any[] = JSON.parse(attendanceCheckRead);
 
             let endId = attendanceCheckData.length > 0
-            ? Math.max(...attendanceCheckData.map(record => record.id))
-            : 0;
+                ? Math.max(...attendanceCheckData.map(record => record.id))
+                : 0;
 
             records.forEach((item, index) => {
                 // Kiểm tra xem có bản ghi nào trùng với attendance_session_id và student_id không
@@ -61,18 +59,18 @@ export class AttendanceCheckService implements IAttendanceCheckService {
                     record.attendance_session_id === item.getAttendanceSessionId() &&
                     record.student_id === item.getStudentId()
                 );
-                
+
                 if (existingIndex !== -1) {
                     item.setId(attendanceCheckData[existingIndex].id);
                     attendanceCheckData[existingIndex] = item;
                 } else {
                     item.setId(endId + 1);
-                    console.log(( index + 1), attendanceCheckData[attendanceCheckData.length - 1].id);
-                    endId ++; 
+                    console.log((index + 1), attendanceCheckData[attendanceCheckData.length - 1].id);
+                    endId++;
                     attendanceCheckData.push(item);
                 }
             })
-            
+
             await fs.writeFile(pathAttendanceCheck, JSON.stringify(attendanceCheckData, null, 2), 'utf8');
             response.setCode(200);
             response.setMessage("Điểm danh đã được lưu");
