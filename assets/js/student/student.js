@@ -1,5 +1,6 @@
-import { post, getParam } from "./method.js"
-import { SERVER_HOST } from "../constant.js";
+import { post, getParam } from "../method.js"
+import { SERVER_HOST } from "../../constant.js";
+import { deleteStudent } from './delete.js';
 
 function renderStudent() {
     const body = {};
@@ -26,11 +27,21 @@ function renderStudent() {
                 <td>${student.address}</td>
                 <td>${student.phoneNumber}</td>
                 <td>
-                    <a href="./index.html" type="button" class="btn btn-danger">Xóa</a>
+                    <button dataIp = "${student.id}" type="button" class="btn btn-danger delete-student">Xóa</button>
                 </td>
             </tr>`
-                tableData.innerHTML += row;
+            tableData.insertAdjacentHTML('beforeend', row);
+        });
+        document.querySelectorAll('.delete-student').forEach(btn => {
+            btn.addEventListener('click', function (event) {
+                event.preventDefault();
+                const studentId = this.getAttribute('dataIp'); 
+                console.log(studentId);
+                deleteStudent(studentId);
             });
         });
+    })
+    .catch(error => console.error('Error fetching student data:', error));
 }
+
 window.onload = renderStudent;

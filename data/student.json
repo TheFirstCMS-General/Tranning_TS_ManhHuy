@@ -1,24 +1,112 @@
 [
-    {
-        "id": 1,
-        "code": "S001",
-        "name": "Nguyễn Quang Huy",
-        "birthday": "2002-06-28",
-        "gender": "MALE",
-        "address": "Hà Nội",
-        "phone_number": "0999999999",
-        "class_id": 1,
-        "deleted": 0
-    },
-    {
-        "id": 2,
-        "code": "S002",
-        "name": "Nguyễn Phúc Mạnh",
-        "birthday": "2001-01-11",
-        "gender": "MALE",
-        "address": "Hà Nội",
-        "phone_number": "0888888888",
-        "class_id": 1,
-        "deleted": 0
-    }
+  {
+    "id": 1,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 1,
+    "deleted": 0
+  },
+  {
+    "id": 2,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 1,
+    "deleted": 0
+  },
+  {
+    "id": 3,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 1,
+    "deleted": 0
+  },
+  {
+    "id": 4,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 2,
+    "deleted": 0
+  },
+  {
+    "id": 5,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 2,
+    "deleted": 0
+  },
+  {
+    "id": 6,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 2,
+    "deleted": 0
+  },
+  {
+    "id": 7,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 1,
+    "deleted": 0
+  },
+  {
+    "id": 8,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 1,
+    "deleted": 0
+  },
+  {
+    "id": 9,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 1,
+    "deleted": 0
+  },
+  {
+    "id": 10,
+    "code": "S001",
+    "name": "Nguyễn Phúc Mạnh",
+    "birthday": "2002-06-28T00:00:00.000Z",
+    "gender": "MALE",
+    "address": "Hà Nội",
+    "phoneNumber": "0999999999",
+    "class_id": 2,
+    "deleted": 0
+  }
 ]

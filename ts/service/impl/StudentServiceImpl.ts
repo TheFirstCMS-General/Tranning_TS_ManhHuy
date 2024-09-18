@@ -28,7 +28,7 @@ export class StudentServiceImpl implements IStudentService {
                     new Date(item.birthday),
                     gender,
                     item.address,
-                    item.phone_number,
+                    item.phoneNumber,
                     item.class_id,
                     item.deleted
                 )
@@ -37,7 +37,7 @@ export class StudentServiceImpl implements IStudentService {
             // Lọc các học sinh theo classId
             const filteredStudents = students.filter(student => {
                 // Điều kiện cho classId
-                const classIdMatches =  student.getClassId() === filterRequest.getClassId();
+                const classIdMatches = student.getClassId() === filterRequest.getClassId();
 
                 // Điều kiện cho name
                 const nameMatches = !filterRequest.getCode() || student.getCode().toLowerCase().includes(filterRequest.getCode().toLowerCase());
@@ -60,6 +60,90 @@ export class StudentServiceImpl implements IStudentService {
 
         return response;
     }
+
+    async deleteId(id: number): Promise<Baseresponse<StudentDto | null>> {
+        const response = new Baseresponse<StudentDto | null>();
+        try {
+            const data = await fs.readFile(pathJson, 'utf8');
+            const pamStudent: any[] = JSON.parse(data);
+            const studentData: StudentDto[] = pamStudent.map(
+                cls => new StudentDto(
+                    cls.id, cls.code, cls.name, new Date(cls.birthday), cls.gender, cls.address, cls.phoneNumber, cls.class_id, cls.deleted)
+            );
+                 console.log(studentData)    
+            const studentIndex = studentData.findIndex(student => student.getId() === id);
+        
+            if (studentIndex !== -1) {
+                const [deletedStudent] = studentData.splice(studentIndex, 1);
+                await fs.writeFile(pathJson, JSON.stringify(studentData, null, 2), 'utf8');
+                
+                response.setCode('200');
+                response.setMessage('Xóa sinh viên thành công');
+                response.setData(deletedStudent);
+            } else {
+                response.setCode('404');
+                response.setMessage('Không tìm thấy sinh viên với ID đã cho');
+                response.setData(null);
+            }
+        } catch (error) {
+            console.error('Lỗi trong quá trình xóa sinh viên:', error);
+            response.setCode('500');
+            response.setMessage('bị lỗi khi xóa sinh viên');
+            response.setData(null);
+        }
+        return response;
+    }
+
+
+
+    async newStudent(student: StudentDto): Promise<Baseresponse<any>> {
+        console.log('Type of student:', typeof student);
+        console.log('Student methods:', Object.getOwnPropertyNames(student));
+
+        const response = new Baseresponse<any>();
+        try {
+            const databa = await fs.readFile(pathJson, 'utf8'); 
+            let studentData: StudentDto[] = [];
+            
+            if (databa) {
+                const jsonData = JSON.parse(databa);
+                studentData = jsonData.map((item: any) => new StudentDto(
+                    item.id, item.code, item.name, new Date(item.birthday), item.gender, item.address, item.phoneNumber, item.class_id, item.deleted
+                ));
+            }
+                console.log(databa)
+            // Xác định ID và mã sinh viên mới
+            const studentId = studentData.length > 0 ? Math.max(...studentData.map(s => s.getId())) : 0;
+            const newId = studentId + 1;
+            const newCode = `S${newId.toString().padStart(3, '0')}`;
+    
+            // Tạo sinh viên mới
+            const newStudent = new StudentDto(
+                newId, newCode, student.getName(), student.getBirthday(), student.getGender(), student.getAddress(), student.getPhoneNumber(), student.getClassId(), 0
+            );
+            
+            
+            studentData.push(newStudent);
+            await fs.writeFile(pathJson, JSON.stringify(studentData, null, 2));
+           
+            response.setCode('200');
+            response.setMessage('Thêm sinh viên thành công vào hệ thống');
+            response.setData(newStudent);
+
+        } catch (e) {
+            response.setCode('500');
+            response.setMessage('Thêm sinh viên vào hệ thống không thành công');
+            console.error('Lỗi thêm sinh viên:', e);
+
+        }
+    
+        return response;
+    }
+    
+
+    
+  
+    
 }
 
 export default StudentServiceImpl;

@@ -6,10 +6,10 @@ export class StudentDto {
     private gender: string;
     private address: string;
     private phoneNumber: string;
-    private classId: number;
+    private class_id: number;
     private deleted: number;
 
-    constructor(id: number, code: string, name: string, birthday: Date, gender: string, address: string, phoneNumber: string, classId: number, deleted: number) {
+    constructor(id: number, code: string, name: string, birthday: Date, gender: string, address: string, phoneNumber: string, class_id: number, deleted: number) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -17,7 +17,7 @@ export class StudentDto {
         this.gender = gender;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.classId = classId;
+        this.class_id = class_id;
         this.deleted = deleted;
     }
 
@@ -37,7 +37,7 @@ export class StudentDto {
         this.code = code;
     }
 
-    public getName(): string {
+       public getName(): string {
         return this.name;
     }
 
@@ -78,11 +78,11 @@ export class StudentDto {
     }
 
     public getClassId(): number {
-        return this.classId;
+        return this.class_id;
     }
 
-    public setClassId(classId: number): void {
-        this.classId = classId;
+    public setClassId(class_id: number): void {
+        this.class_id = class_id;
     }
 
     public getDeleted(): number {

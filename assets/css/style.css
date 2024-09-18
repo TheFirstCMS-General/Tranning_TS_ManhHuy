@@ -1255,3 +1255,36 @@ body {
 .color{
   color: #ffffff;
 }
+
+
+
+.form-container {
+  background-color: #ffffff; /* White background for the form */
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+.form-row {
+  margin-bottom: 1rem;
+}
+.form-row label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.form-row input, .form-row select {
+  border-radius: 0.375rem;
+}
+.form-header {
+  margin-bottom: 1.5rem;
+}
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Quản Lý Lớp Học</title>
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -70,31 +70,46 @@
 
     <main id="main" class="main">
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Quản lý lớp học</h5>
-                <div class="action-student-list d-flex gap-2">
-                    <div class="item-action">
-                        <button id = "newAdd" onclick="window.location.href='http://127.0.0.1:5500/pages/from/fromClass.html';" style="background-color: #9242cc; border-color: #9242cc;" type="button"
-                            class="btn btn-success">Thêm mới </button>
+            <div class="container">
+                <div style="margin-right: 255px;margin-top: 77px;" class="form-container">
+                    <div style="text-align: center; cursor: pointer;" class="form-header">
+                        <h2 style="color:  #012970;  " class="text-center">Thêm Thông Tin Sinh Viên</h2>
+                
                     </div>
-                    <div class="item-action">
-                        <button type="button" id="export-excel" class="btn btn-success document">Xuất báo cáo</button>
-                    </div>
-                    <!-- Input file ẩn -->
-                    <input type="file" id="import-student" style="display:none">
+                    <form>
+                        <div class="form-row">
+                            <label for="code">Mã sinh viên <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="code">
+                        </div>
+                        <div  class="form-row">
+                            <label for="name">Tên Sinh Viên <span class="text-danger">*</span></label>
+                            <input   type="text" class="form-control" id="name" >
+                        </div>
+                        <div class="form-row">
+                            <label for="gender">Giới tính<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="gender">
+                        </div>
+                        <div class="form-row">
+                            <label for="year">Ngày tháng năm sinh <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="year" >
+                        </div>
+
+                        <div class="form-row">
+                            <label for="address">Địa chỉ<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="address">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="phone">Số điện thoại<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="phone">
+                        </div>
+                      
+                        <div class="text-center">
+                            <button style="width: 194px;" id="newAdd"  type="button" class="btn btn-success">Thêm Mới</button>
+                        </div>
+                    
+                    </form>
                 </div>
-
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">STT</th>
-                            <th scope="col">Lớp học</th>
-                            <th scope="col">Hoạt động</th>
-
-                        </tr>
-                    </thead>
-                    <tbody id="class-table"></tbody>
-                </table>
             </div>
         </div>
     </main>
@@ -102,9 +117,7 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-    <script type="module" src="../../assets/js/class/class.js" ></script>
-    <script type="module"  src="../../assets/js/class/delete.js" ></script>
-
+            <script type="module" src="../../assets/js/student/new.js"></script>
 </body>
 
 </html>

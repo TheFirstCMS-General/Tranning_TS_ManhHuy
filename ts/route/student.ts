@@ -26,5 +26,42 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const id = parseInt(req.params.id, 10);
+        const deleteStudentResponse = await studentService.deleteId(id); 
+        res.json(deleteStudentResponse);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Có lỗi khi xóa sinh viên.');
+    }
+});
+
+
+router.post('/newStudent', async (req, res) => {
+    try {
+        const studentp = req.body; // Lấy student từ request body
+
+        // Kiểm tra nếu không có student
+        if (!studentp) {
+            return res.status(400).json({
+                code: '400',
+                message: 'Thông tin sinh viên không được bỏ trống'
+            });
+        }
+
+        // Truyền đối tượng sinh viên cho hàm newStudent
+        const moreStudent = await studentService.newStudent(studentp);
+        res.json(moreStudent);
+        
+    } catch (e) {
+        console.error('Error adding student', e);
+        res.status(500).json({
+            code: '500',
+            message: 'Lỗi khi thêm sinh viên'
+        });
+    }
+});
+
 
 export default router;

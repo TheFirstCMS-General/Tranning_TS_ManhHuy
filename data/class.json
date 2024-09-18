@@ -1,15 +1,38 @@
 [
-    {
-        "id": 1,
-        "code": "C001",
-        "name": "6A",
-        "deleted": 0
-    },
-
-    {
-        "id": 2,
-        "code": "C001",
-        "name": "7B",
-        "deleted": 0
-    }
+  {
+    "id": 1,
+    "code": "C001",
+    "name": "4A",
+    "deleted": 0
+  },
+  {
+    "id": 2,
+    "code": "C001",
+    "name": "5A",
+    "deleted": 0
+  },
+  {
+    "id": 3,
+    "code": "C001",
+    "name": "6A",
+    "deleted": 0
+  },
+  {
+    "id": 4,
+    "code": "C001",
+    "name": "7A",
+    "deleted": 0
+  },
+  {
+    "id": 5,
+    "code": "C005",
+    "name": "8A",
+    "deleted": 0
+  },
+  {
+    "id": 6,
+    "code": "C006",
+    "name": "9A",
+    "deleted": 0
+  }
 ]
