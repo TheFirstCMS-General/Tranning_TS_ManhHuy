@@ -34,4 +34,7 @@ document.getElementById('AddClass').addEventListener('click', function () {
     } else {
         alert('Vui lòng nhập tên lớp học!');
     }
+
 });
+
+

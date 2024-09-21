@@ -1,10 +1,11 @@
 import { StudentDto } from "../../dto/StudentDto";
 import { IStudentService } from "../IStudentService";
 import { Baseresponse } from "../../response/Baseresponse";
-import fs from 'fs/promises'; // Sử dụng fs/promises cho Promise-based API
+import fs from 'fs/promises';
 import path from 'path';
 import { Gender } from "../../enum/gender";
 import { StudentFilterRequest } from "../../request/StudentFilterRequest";
+
 
 const pathJson = path.join(__dirname, "../../../data/student.json");
 
@@ -21,19 +22,9 @@ export class StudentServiceImpl implements IStudentService {
             const students: StudentDto[] = studentData.map((item: any) => {
                 const genderKey = item.gender as keyof typeof Gender;
                 const gender = Gender[genderKey] || Gender.OTHER; // Lấy giá trị enum tương ứng hoặc giá trị mặc định
-                return new StudentDto(
-                    item.id,
-                    item.code,
-                    item.name,
-                    new Date(item.birthday),
-                    gender,
-                    item.address,
-                    item.phoneNumber,
-                    item.class_id,
-                    item.deleted
+                return new StudentDto( item.id, item.code, item.name, new Date(item.birthday), gender, item.address, item.phoneNumber, item.class_id, item.deleted
                 )
             });
-
             // Lọc các học sinh theo classId
             const filteredStudents = students.filter(student => {
                 // Điều kiện cho classId
@@ -57,7 +48,6 @@ export class StudentServiceImpl implements IStudentService {
             response.setMessage('Lỗi khi đọc dữ liệu JSON');
             response.setData([]);
         }
-
         return response;
     }
 
@@ -94,55 +84,57 @@ export class StudentServiceImpl implements IStudentService {
         return response;
     }
 
-
-
     async newStudent(student: StudentDto): Promise<Baseresponse<any>> {
-        console.log('Type of student:', typeof student);
-        console.log('Student methods:', Object.getOwnPropertyNames(student));
-
         const response = new Baseresponse<any>();
+        
         try {
             const databa = await fs.readFile(pathJson, 'utf8'); 
             let studentData: StudentDto[] = [];
             
             if (databa) {
                 const jsonData = JSON.parse(databa);
+    
+                // Chuyển đổi dữ liệu JSON thành các đối tượng StudentDto
                 studentData = jsonData.map((item: any) => new StudentDto(
                     item.id, item.code, item.name, new Date(item.birthday), item.gender, item.address, item.phoneNumber, item.class_id, item.deleted
                 ));
             }
-                console.log(databa)
+    
+            // Kiểm tra nếu student truyền vào không phải là instance của StudentDto
+            if (!(student instanceof StudentDto)) {
+                throw new Error('Đối tượng truyền vào không phải là instance của StudentDto');
+            }
+    
             // Xác định ID và mã sinh viên mới
             const studentId = studentData.length > 0 ? Math.max(...studentData.map(s => s.getId())) : 0;
             const newId = studentId + 1;
             const newCode = `S${newId.toString().padStart(3, '0')}`;
     
-            // Tạo sinh viên mới
+            // Tạo sinh viên mới với ID và mã mới
             const newStudent = new StudentDto(
                 newId, newCode, student.getName(), student.getBirthday(), student.getGender(), student.getAddress(), student.getPhoneNumber(), student.getClassId(), 0
             );
             
-            
+            // Thêm sinh viên mới vào danh sách
             studentData.push(newStudent);
+    
+            // Ghi lại dữ liệu vào file JSON
             await fs.writeFile(pathJson, JSON.stringify(studentData, null, 2));
-           
+    
+            // Thiết lập phản hồi thành công
             response.setCode('200');
             response.setMessage('Thêm sinh viên thành công vào hệ thống');
             response.setData(newStudent);
-
+    
         } catch (e) {
+            // Xử lý lỗi và trả về phản hồi thất bại
             response.setCode('500');
             response.setMessage('Thêm sinh viên vào hệ thống không thành công');
-            console.error('Lỗi thêm sinh viên:', e);
-
+            console.error('Lỗi khi thêm sinh viên:', e);
         }
     
         return response;
     }
-    
-
-    
-  
     
 }
 
